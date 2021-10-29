@@ -8,7 +8,6 @@ setup(
     author='Robin Paulson',
     author_email='robin@bumblepuppy.org',
     license='MIT',
-    packages=['suncalcPy2'],
     data_files = [("", ["LICENSE"])],
     classifiers=[
         'Development Status :: 1 - Planning',
