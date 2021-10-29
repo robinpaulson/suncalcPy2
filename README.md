@@ -13,8 +13,9 @@ A Python library for calculating sun/moon times, positions and phases.  Includes
  * and more!
 
 ### Installing
+suncalcPy2 is not included in PYPI yet, so installation is direct from Github
 
-`pip install suncalcPy`
+`pip install git+https://github.com/robinpaulson/suncalcPy2 `
 
 ### Usage examples:
 
