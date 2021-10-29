@@ -11,6 +11,7 @@ asin = math.asin
 atan = math.atan2
 acos = math.acos
 rad  = PI / 180.0
+e = rad * 23.4397 # obliquity of the Earth
 dayMs = 1000 * 60 * 60 * 24
 J1970 = 2440588
 J2000 = 2451545
@@ -25,15 +26,13 @@ times  = [
     [     6, 'goldenHourEnd', 'goldenHour'  ]
 ]
 
-e = rad * 23.4397 # obliquity of the Earth
-
-def rightAscension(l, b): 
+def rightAscension(l, b):
 	return atan(sin(l) * cos(e) - tan(b) * sin(e), cos(l))
 
-def declination(l, b):    
+def declination(l, b):
 	return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l))
 
-def azimuth(H, phi, dec):  
+def azimuth(H, phi, dec):
 	return atan(sin(H), cos(H) * sin(phi) - tan(dec) * cos(phi))
 
 def altitude(H, phi, dec):
@@ -48,7 +47,7 @@ def toJulian(date):
 def fromJulian(j):
 	return datetime.fromtimestamp(((j + 0.5 - J1970) * dayMs)/1000.0)
 
-def toDays(date):   
+def toDays(date):
  	return toJulian(date) - J2000
 
 def julianCycle(d, lw):
@@ -89,8 +88,8 @@ def getSetJ(h, lw, phi, dec, n, M, L):
 # geocentric ecliptic coordinates of the moon
 def moonCoords(d):
     L = rad * (218.316 + 13.176396 * d)
-    M = rad * (134.963 + 13.064993 * d) 
-    F = rad * (93.272 + 13.229350 * d)  
+    M = rad * (134.963 + 13.064993 * d)
+    F = rad * (93.272 + 13.229350 * d)
 
     l  = L + rad * 6.289 * sin(M)
     b  = rad * 5.128 * sin(F)
@@ -167,7 +166,7 @@ def getMoonTimes(date, lat, lng):
             dx = math.sqrt(d) / (abs(a) * 2)
             x1 = xe - dx
             x2 = xe + dx
-            if abs(x1) <= 1: 
+            if abs(x1) <= 1:
                 roots += 1
             if abs(x2) <= 1:
                 roots += 1
@@ -175,7 +174,7 @@ def getMoonTimes(date, lat, lng):
                 x1 = x2
 
         if roots == 1:
-            if h0 < 0: 
+            if h0 < 0:
                 rise = i + x1
             else:
                 sett = i + x1
