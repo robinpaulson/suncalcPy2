@@ -15,7 +15,7 @@ e = rad * 23.4397 # obliquity of the Earth
 dayMs = 1000 * 60 * 60 * 24
 J1970 = 2440588
 J2000 = 2451545
-J0 = 0.0009;
+J0 = 0.0009
 
 times  = [
     [-0.833, 'sunrise',       'sunset'      ],
