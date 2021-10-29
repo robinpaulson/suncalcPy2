@@ -106,7 +106,7 @@ def getMoonIllumination(date):
     sdist = 149598000
     phi = acos(sin(s["dec"]) * sin(m["dec"]) + cos(s["dec"]) * cos(m["dec"]) * cos(s["ra"] - m["ra"]))
     inc = atan(sdist * sin(phi), m["dist"] - sdist * cos(phi))
-    angle = atan(cos(s["dec"]) * sin(s["ra"] - m["ra"]), sin(s["dec"]) * cos(m["dec"]) - cos(s["dec"]) * sin(m["dec"]) * cos(s["ra"] - m["ra"]));
+    angle = atan(cos(s["dec"]) * sin(s["ra"] - m["ra"]), sin(s["dec"]) * cos(m["dec"]) - cos(s["dec"]) * sin(m["dec"]) * cos(s["ra"] - m["ra"]))
 
     return dict(fraction=(1 + cos(inc)) / 2, phase= 0.5 + 0.5 * inc * (-1 if angle < 0 else 1) / PI, angle= angle)
 
@@ -134,8 +134,8 @@ def getTimes(date, lat, lng):
         time = times[i]
         Jset = getSetJ(time[0] * rad, lw, phi, dec, n, M, L);
         Jrise = Jnoon - (Jset - Jnoon);
-        result[time[1]] = fromJulian(Jrise).strftime('%Y-%m-%d %H:%M:%S');
-        result[time[2]] = fromJulian(Jset).strftime('%Y-%m-%d %H:%M:%S');
+        result[time[1]] = fromJulian(Jrise).strftime('%Y-%m-%d %H:%M:%S')
+        result[time[2]] = fromJulian(Jset).strftime('%Y-%m-%d %H:%M:%S')
 
     return result
 
@@ -151,7 +151,7 @@ def getMoonTimes(date, lat, lng):
     rise = 0
     sett = 0
     # go in 2-hour chunks, each time seeing if a 3-point quadratic curve crosses zero (which means rise or set)
-    for i in range(1,24,2):
+    for i in range(1,25,2):
         h1 = getMoonPosition(hoursLater(t, i), lat, lng)["altitude"] - hc
         h2 = getMoonPosition(hoursLater(t, i + 1), lat, lng)["altitude"] - hc
 
