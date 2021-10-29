@@ -9,7 +9,7 @@ setup(
     author_email='robin@bumblepuppy.org',
     license='MIT',
     data_files = [("", ["LICENSE"])],
-    packages='suncalcPy2',
+    packages=['suncalcPy2'],
     zip_safe=False,
     classifiers=[
         'Development Status :: 1 - Planning',
