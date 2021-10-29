@@ -9,6 +9,7 @@ setup(
     author_email='robin@bumblepuppy.org',
     license='MIT',
     data_files = [("", ["LICENSE"])],
+    zip_safe=False,
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research',
