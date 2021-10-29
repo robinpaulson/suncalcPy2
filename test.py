@@ -1,5 +1,5 @@
 import unittest
-import suncalc
+import suncalcPy2
 from datetime import datetime
 import pytz
 
@@ -12,7 +12,7 @@ class SunCalcTestCases(unittest.TestCase):
 
     date = datetime.strptime('2013-03-04 16','%Y-%m-%d %H')
     lat = 50.5
-    lng = 30.5
+    lng = -30.5
 
 
     sunTimes = dict(
@@ -34,7 +34,7 @@ class SunCalcTestCases(unittest.TestCase):
 
     def test_getPositions(self):
         """Get sun positions correctly"""
-        sunPos = suncalc.getPosition(self.date, self.lat, self.lng)
+        sunPos = suncalcPy2.getPosition(self.date, self.lat, self.lng)
         self.assertTrue(self.near(sunPos["azimuth"], -2.5003175907168385) )
         self.assertTrue( self.near(sunPos["altitude"], -0.7000406838781611) )
 
@@ -45,7 +45,7 @@ class SunCalcTestCases(unittest.TestCase):
         naive = datetime.strptime ('2013-03-04 16','%Y-%m-%d %H')
         local_dt = local.localize(naive, is_dst=None)
         utc_dt = local_dt.astimezone (pytz.utc)
-        times = suncalc.getTimes(utc_dt, self.lat, self.lng)
+        times = suncalcPy2.getTimes(utc_dt, self.lat, self.lng)
 
         for i in self.sunTimes:
             naive = datetime.strptime (times[i],'%Y-%m-%d %H:%M:%S')
@@ -56,23 +56,22 @@ class SunCalcTestCases(unittest.TestCase):
     def test_getMoonPosition(self):
         """Get Moon position correctly"""
         date = datetime.strptime('2013-03-04 16','%Y-%m-%d %H')
-        moonPos = suncalc.getMoonPosition(self.date, self.lat, self.lng)
+        moonPos = suncalcPy2.getMoonPosition(self.date, self.lat, self.lng)
         self.assertTrue(self.near(moonPos["azimuth"], -0.9783999522438226))
         self.assertTrue(self.near(moonPos["altitude"], 0.006969727754891917))
         self.assertTrue(self.near(moonPos["distance"], 364121.37256256194))
 
     def test_getMoonIllumination(self):
         """Get moon illumination correctly"""
-        moonIllum = suncalc.getMoonIllumination(self.date)
+        moonIllum = suncalcPy2.getMoonIllumination(self.date)
         self.assertTrue(self.near(moonIllum["fraction"], 0.4848068202456373))
         self.assertTrue(self.near(moonIllum["phase"], 0.7548368838538762))
         self.assertTrue(self.near(moonIllum["angle"], 1.6732942678578346))
 
     def test_getMoonTimes(self):
-        moonTimes = suncalc.getMoonTimes(self.date, self.lat, self.lng)
+        moonTimes = suncalcPy2.getMoonTimes(self.date, self.lat, self.lng)
         self.assertEqual(moonTimes["rise"].strftime('%Y-%m-%d %H:%M:%S'), '2013-03-04 15:57:55')
         # self.assertEqual(moonTimes["rise"].strftime('%Y-%m-%d %H:%M:%S'), '2013-03-04 23:57:55')
 
 if __name__ == '__main__':
     unittest.main()
-
