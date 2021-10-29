@@ -8,7 +8,8 @@ setup(
     author='Robin Paulson',
     author_email='robin@bumblepuppy.org',
     license='MIT',
-
+    packages=['casttube'],
+    data_files = [("", ["LICENSE"])],
     classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Science/Research',
