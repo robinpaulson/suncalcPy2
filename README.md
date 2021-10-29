@@ -6,6 +6,8 @@ This is a fork of https://github.com/Broham/suncalcPy/, with patches from variou
 
 I wanted a lightweight Python library so I could track the sun for my solar panel setup. This is the lightest I could find, with minor inaccuracies due to the approximations made. At some point I will remove the unneeded functions, such as moon-tracking and times for golden hour, etc.
 
+The solar tracking setup is based on a Raspberry Pi Pico, running micropython, hence the requirement for tiny libraries and code.
+
 Includes methods for getting:
 
  * sunrise
