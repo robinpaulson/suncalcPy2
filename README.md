@@ -4,7 +4,7 @@ A Python library for calculating sun/moon times, positions and phases.
 
 This is a fork of https://github.com/Broham/suncalcPy/, with patches from various contributors sourced from https://github.com/Broham/suncalcPy/pulls/.
 
-I wanted a lightweight Python library so I could track the sun for my solar panel setup. This is the lightest I could find, with minor inaccuracies due to the approximations made. At some point I will remove the unneeded functions, such as moon-tracking and times for golden hour, etc.
+I wanted a lightweight Python library so I could track the sun for my solar panel setup. This is the lightest I could find, with only minor inaccuracies due to the simplifying approximations made. At some point I may remove the unneeded functions, such as moon-tracking and times for golden hour, etc.
 
 The solar tracking setup is based on a Raspberry Pi Pico, running micropython, hence the requirement for tiny libraries and code.
 
@@ -21,7 +21,7 @@ Includes methods for getting:
  * and more!
 
 ### Installing
-suncalcPy2 is not included in PYPI yet, so installation is direct from Github
+suncalcPy2 is not included in PYPI yet, maybe never, so installation is direct from Github
 
 `pip install git+https://github.com/robinpaulson/suncalcPy2`
 
